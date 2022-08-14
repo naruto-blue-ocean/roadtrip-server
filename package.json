@@ -7,7 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server-dev": "nodemon ./index.js",
     "db-schema": "psql postgres -f ./db/schema.sql"
-
   },
   "repository": {
     "type": "git",
