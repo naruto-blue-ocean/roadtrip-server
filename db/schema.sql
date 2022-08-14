@@ -1,4 +1,3 @@
-
 DROP DATABASE IF EXISTS roadtrip;
 CREATE DATABASE roadtrip;
 
@@ -55,5 +54,5 @@ CREATE TABLE IF NOT EXISTS user_poi_note (
   user_id VARCHAR(255) NOT NULL REFERENCES users(id),
   poi_id VARCHAR(255) NOT NULL REFERENCES pois(id),
   note_id INTEGER NOT NULL REFERENCES notes(id),
-  UNIQUE (user_id, poi_id, note_id)
+  UNIQUE (user_id, poi_id)
 );
