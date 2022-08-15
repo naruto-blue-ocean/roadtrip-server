@@ -32,7 +32,10 @@ CREATE TABLE IF NOT EXISTS pois (
 
 CREATE TABLE IF NOT EXISTS notes (
   id SERIAL PRIMARY KEY,
-  content TEXT NOT NULL
+  content TEXT NOT NULL,
+  user_email VARCHAR(255) NOT NULL REFERENCES users(email),
+  poi_id VARCHAR(255) NOT NULL REFERENCES pois(id),
+  UNIQUE (user_email, poi_id)
 );
 
 -- create relational tables
@@ -58,3 +61,4 @@ CREATE TABLE IF NOT EXISTS user_poi_note (
   note_id INTEGER NOT NULL REFERENCES notes(id),
   UNIQUE (user_email, poi_id)
 );
+
