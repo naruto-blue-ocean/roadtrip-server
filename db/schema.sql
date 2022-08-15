@@ -30,7 +30,10 @@ CREATE TABLE IF NOT EXISTS pois (
 
 CREATE TABLE IF NOT EXISTS notes (
   id SERIAL PRIMARY KEY,
-  content TEXT NOT NULL
+  content TEXT NOT NULL,
+  user_id VARCHAR(255) NOT NULL REFERENCES users(id),
+  poi_id VARCHAR(255) NOT NULL REFERENCES pois(id),
+  UNIQUE (user_id, poi_id)
 );
 
 -- create relational tables
@@ -47,12 +50,4 @@ CREATE TABLE IF NOT EXISTS trip_destination_poi (
   destination_id VARCHAR(255) NOT NULL REFERENCES destinations(id),
   poi_id VARCHAR(255) NOT NULL REFERENCES pois(id),
   UNIQUE (trip_id, destination_id, poi_id)
-);
-
-CREATE TABLE IF NOT EXISTS user_poi_note (
-  id SERIAL PRIMARY KEY,
-  user_id VARCHAR(255) NOT NULL REFERENCES users(id),
-  poi_id VARCHAR(255) NOT NULL REFERENCES pois(id),
-  note_id INTEGER NOT NULL REFERENCES notes(id),
-  UNIQUE (user_id, poi_id)
 );
