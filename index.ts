@@ -29,7 +29,7 @@ app.post(
 );
 
 app.get(
-  '/notes', controllers.getNote.getNote
+  '/notes', controllers.getNote
 )
 
 

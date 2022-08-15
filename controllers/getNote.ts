@@ -15,4 +15,4 @@ const getNote = (req : any, res : any) => {
   // res.end('got note')
 }
 
-module.exports = {getNote};
+module.exports = getNote;
