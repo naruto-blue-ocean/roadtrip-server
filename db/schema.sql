@@ -7,8 +7,10 @@ CREATE DATABASE roadtrip;
 CREATE TYPE trip_status AS ENUM ('completed', 'active', 'planned');
 
 CREATE TABLE IF NOT EXISTS users (
-  id VARCHAR(255) PRIMARY KEY UNIQUE, -- id of user depends on authentication step
-  name VARCHAR(255) NOT NULL
+  -- id SERIAL PRIMARY KEY, -- id of user depends on authentication step
+  -- name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL PRIMARY KEY,
+  password VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS trips (
@@ -31,17 +33,17 @@ CREATE TABLE IF NOT EXISTS pois (
 CREATE TABLE IF NOT EXISTS notes (
   id SERIAL PRIMARY KEY,
   content TEXT NOT NULL,
-  user_id VARCHAR(255) NOT NULL REFERENCES users(id),
+  user_email VARCHAR(255) NOT NULL REFERENCES users(email),
   poi_id VARCHAR(255) NOT NULL REFERENCES pois(id),
-  UNIQUE (user_id, poi_id)
+  UNIQUE (user_email, poi_id)
 );
 
 -- create relational tables
 CREATE TABLE IF NOT EXISTS user_trip (
   id SERIAL PRIMARY KEY,
-  user_id VARCHAR(255) NOT NULL REFERENCES users(id),
+  user_email VARCHAR(255) NOT NULL REFERENCES users(email),
   trip_id INTEGER NOT NULL REFERENCES trips(id),
-  UNIQUE (user_id, trip_id)
+  UNIQUE (user_email, trip_id)
 );
 
 CREATE TABLE IF NOT EXISTS trip_destination_poi (
@@ -51,3 +53,12 @@ CREATE TABLE IF NOT EXISTS trip_destination_poi (
   poi_id VARCHAR(255) NOT NULL REFERENCES pois(id),
   UNIQUE (trip_id, destination_id, poi_id)
 );
+
+CREATE TABLE IF NOT EXISTS user_poi_note (
+  id SERIAL PRIMARY KEY,
+  user_email VARCHAR(255) NOT NULL REFERENCES users(email),
+  poi_id VARCHAR(255) NOT NULL REFERENCES pois(id),
+  note_id INTEGER NOT NULL REFERENCES notes(id),
+  UNIQUE (user_email, poi_id)
+);
+
