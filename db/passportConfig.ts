@@ -2,7 +2,7 @@ export {};
 const LocalStrategy = require('passport-local');
 const { emailExists, createUser, matchPassword } = require('./helper.ts');
 
-module.exports = (passport) => {
+module.exports = (passport: any) => {
   passport.use(
     "local-signup",
     new LocalStrategy(

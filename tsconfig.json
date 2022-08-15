@@ -100,6 +100,9 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
     "outDir": "./dist",
-    "typeRoots" : ["./types", "./node_modules/@types"]
+    "typeRoots" : ["./types", "./node_modules/@types"],
+    "moduleResolution": "node",
+    "pretty": true,
+      "sourceMap": true,
   }
 }

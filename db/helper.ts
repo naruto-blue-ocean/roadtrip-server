@@ -1,7 +1,7 @@
 export {};
 // declare function require(name:string);
-const client = require('./database');
-const bcrypt = require('bcrypt');
+const client = require('./index.js');
+const bcrypt = require('bcryptjs');
 
 const emailExists = async (email: String) => {
   const data = await client.query('SELECT * FROM users WHERE email=$1', [ email ])

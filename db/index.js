@@ -1,5 +1,5 @@
 const { Client } = require("pg");
-const { user, host, database, password, port } = require("./dbConfig");
+// const { user, host, database, password, port } = require("./dbConfig");
 
 const client = new Client({
   user: process.env.PGUSER,
@@ -9,6 +9,6 @@ const client = new Client({
   port: process.env.PGPORT
 });
 
-client.connect();
+client.connect(() => console.log('db connection working'));
 
 module.exports = client;
