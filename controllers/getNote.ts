@@ -1,5 +1,5 @@
-const express = require('express');
-const client = require('../db/index.js');
+var express = require('express');
+var client = require('../db/index.js');
 
 const getNote = (req : any, res : any) => {
   console.log('hi we have reached get note controller');
