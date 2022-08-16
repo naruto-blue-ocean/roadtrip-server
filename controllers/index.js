@@ -3,5 +3,5 @@
 // exports.emailExists = require('./emailExists.js');
 // exports.createUser = require('./createUser.js');
 // exports.matchPassword = require('./matchPassword.js');
-exports.getNote = require('./getNote.ts');
-
+exports.getNote = require("./getNote.ts");
+exports.updateNote = require("./updateNote.ts");
