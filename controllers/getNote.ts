@@ -3,7 +3,7 @@ var client = require('../db/index.js');
 
 const getNote = (req : any, res : any) => {
   console.log('hi we have reached get note controller');
-  const querystring = 'SELECT * FROM notes;'
+  const querystring = `SELECT * FROM notes WHERE user_email = '${req.params.user_email}' AND poi_id = '${req.params.poi_id}';`
 
   client.query(querystring).then((data: any) => {
     console.log(data.rows);
