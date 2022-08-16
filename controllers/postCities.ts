@@ -9,7 +9,7 @@ const postCities = async (req: any, res: any) => {
     VALUES ($1, $2)`;
     var values = [city.name, city.id]
     var results = await client.query(queryString, values)
-    try{console.log('successfully stored data')}
+    try{console.log('successfully stored dataa')}
     catch(err) {console.log('err in storing data', err)}
   })
 
