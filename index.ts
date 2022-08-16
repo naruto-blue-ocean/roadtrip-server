@@ -1,5 +1,7 @@
 export {};
 require('dotenv').config()
+// import controllers from './controllers';
+const controllers = require('./controllers')
 
 const express = require('express');
 import { Request, Response } from 'express';
@@ -8,7 +10,7 @@ require('./db/passportConfig.ts')(passport);
 
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
 app.use(express.urlencoded({ extended: true}))
 
 app.post(
@@ -25,5 +27,10 @@ app.post(
     res.json({ user: req.user });
   }
 );
+
+app.get(
+  '/notes', controllers.getNote
+)
+
 
 app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}`))
