@@ -4,4 +4,4 @@
 // exports.createUser = require('./createUser.js');
 // exports.matchPassword = require('./matchPassword.js');
 exports.getNote = require('./getNote.ts');
-
+exports.postCities = require('./postCities.ts');
