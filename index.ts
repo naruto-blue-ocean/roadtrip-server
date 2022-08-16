@@ -29,7 +29,7 @@ app.post(
 );
 
 app.get(
-  '/notes', controllers.getNote
+  '/notes/:user_email/:poi_id', controllers.getNote
 )
 
 

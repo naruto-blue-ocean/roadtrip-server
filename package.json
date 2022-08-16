@@ -9,6 +9,7 @@
     "start": "ts-node dist/index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
     "server-dev": "nodemon ./index.ts",
+    "db-seed": "psql postgres -f ./db/seed.sql",
     "db-schema": "psql postgres -f ./db/schema.sql"
   },
   "repository": {
