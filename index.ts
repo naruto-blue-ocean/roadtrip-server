@@ -32,7 +32,13 @@ app.get(
   '/notes/:user_email/:poi_id', controllers.getNote
 )
 
+
 app.put('/updateNote', controllers.updateNote)
+
+
+app.post(
+  '/postCities', controllers.postCities
+)
 
 
 app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}`))
