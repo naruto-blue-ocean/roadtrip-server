@@ -5,3 +5,4 @@
 // exports.matchPassword = require('./matchPassword.js');
 exports.getNote = require('./getNote.ts');
 exports.postCities = require('./postCities.ts');
+exports.getTripID = require('./getTripID.js');

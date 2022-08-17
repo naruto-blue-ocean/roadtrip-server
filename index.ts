@@ -28,6 +28,8 @@ app.post(
   }
 );
 
+app.post('/share', controllers.getTripID);
+
 app.get(
   '/notes/:user_email/:poi_id', controllers.getNote
 )
