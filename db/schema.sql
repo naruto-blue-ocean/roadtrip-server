@@ -22,7 +22,9 @@ CREATE TABLE IF NOT EXISTS trips (
 CREATE TABLE IF NOT EXISTS destinations (
   id VARCHAR(255) PRIMARY KEY UNIQUE, -- id here is pulled from Place AutoComplete API
   -- id should match search from API call
-  name VARCHAR(255) NOT NULL
+  name VARCHAR(255) NOT NULL,
+  lat DECIMAL NOT NULL,
+  lng DECIMAL NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS pois (
