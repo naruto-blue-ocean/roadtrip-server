@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS trips (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
-  status trip_status NOT NULL
+  status NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS destinations (
