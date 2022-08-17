@@ -33,7 +33,7 @@ app.get(
 )
 
 
-app.put('/updateNote/:user_email/:poi_id', controllers.updateNote)
+app.put('/updateNote', controllers.updateNote)
 
 
 app.post(
