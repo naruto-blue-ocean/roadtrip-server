@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS trips (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
-  status NOT NULL
+  status trip_status NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS destinations (
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS trip_destination (
   trip_id INTEGER NOT NULL REFERENCES trips(id),
   destination_id VARCHAR(255) NOT NULL REFERENCES destinations(id),
   UNIQUE (trip_id, destination_id)
-)
+);
 
 CREATE TABLE IF NOT EXISTS trip_destination_poi (
   id SERIAL PRIMARY KEY,
