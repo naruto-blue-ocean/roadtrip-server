@@ -13,22 +13,24 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}))
 
-//Authorization
 app.post(
   "/auth/signup",
   passport.authenticate("local-signup", { session: false }),
   (req: any, res: any) => {
-    res.json({ user: req.user });
-  }
-);
-app.post(
-  "/auth/login",
-  passport.authenticate("local-login", { session: false }),
-  (req: any, res: any) => {
+    console.log('hitting auth signup')
     res.json({ user: req.user });
   }
 );
 
+app.post("/auth/login",
+  passport.authenticate("local-login", { session: false }),
+  (req: any, res: any) => {
+    console.log(res)
+    res.json({ user: req.user });
+  }
+);
+
+app.post('/share/:email_address', controllers.shareTrip);
 
 app.get(
   '/notes/:user_email/:poi_id', controllers.getNote
@@ -60,9 +62,6 @@ app.put('/trips/:tripId/destinations', controllers.updateDestinationOrder);
 
 //to update the order of POIs in a specific trip
 app.put('/trips/:tripId/destinations/:destinationId/pois', controllers.updatePOIOrder);
-
-
-
 
 //Server initialization
 app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}`))
