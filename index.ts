@@ -41,14 +41,15 @@ app.post(
 )
 
 app.get('/trips/:trip_id', controllers.getTrip);
-app.delete('/trips/destinations/:destination_id', controllers.deleteDestination)
-app.delete('/trips/destinations/pois/:poi_id', controllers.deletePOI)
+
+app.delete('/trips/destinations/:destination_id', controllers.deleteDestination);
+app.delete('/trips/destinations/pois/:poi_id', controllers.deletePOI);
 
 //to update the order of destinations in a specific trip
-app.put('/trips/:trip_id/destinations', controllers.updateDestinationOrder)
+app.put('/trips/:tripId/destinations', controllers.updateDestinationOrder);
 
 //to update the order of POIs in a specific trip
-app.put('/trips/destinations/pois', controllers.updatePOIOrder)
+app.put('/trips/:tripId/destinations/:destinationId/pois', controllers.updatePOIOrder);
 
 
 

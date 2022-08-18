@@ -1,7 +1,6 @@
 var express = require('express');
 var client = require('../db/index.js');
 
-
 /* client will send PUT request to /trips/:trip_id/destinations
 body of req will be an object
 {
@@ -9,14 +8,12 @@ body of req will be an object
   destination_id # 2: new order 2,
 }
 */
+
 const updateDestinationOrder = (req : any, res : any) => {
-  const queryInsertStr = Object.entries(req.body).map(([destination_id, order_number]) =>  (`('${destination_id}', ${order_number})`)).join(', ');
-  const query = `UPDATE trip_destination AS td
-    SET order_number = temp.order_number
-    FROM (VALUES ${queryInsertStr})
-    AS temp(destination_id, order_number)
-    WHERE td.destination_id = temp.destination_id
-    AND trip_id = ${req.params.trip_id}`;
+  const queryInsertStr = Object.entries(req.body).map(([destinationId, orderNumber]) =>  (`('${destinationId}', ${orderNumber})`)).join(', ');
+  const query = `UPDATE trip_destination AS td SET order_number = temp.order_number
+  FROM (VALUES ${queryInsertStr}) AS temp(destination_id, order_number)
+  WHERE td.destination_id = temp.destination_id AND trip_id = ${req.params.tripId}`;
 
   client.query(query)
     .then(() => {
