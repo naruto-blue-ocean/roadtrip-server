@@ -13,20 +13,18 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}))
 
-app.post(
-  "/auth/signup",
-  /* passport.authenticate("local-signup", { session: false }), */
+app.post("/auth/signup",
+  passport.authenticate("local-signup", { session: false }),
   (req: any, res: any) => {
     console.log('hitting auth signup')
-    res.json({ user: req.user }
-
-      );
+    res.json({ user: req.user });
   }
 );
-app.post(
-  "/auth/login",
-  /* passport.authenticate("local-login", { session: false }), */
+
+app.post("/auth/login",
+  passport.authenticate("local-login", { session: false }),
   (req: any, res: any) => {
+    console.log(res)
     res.json({ user: req.user });
   }
 );
