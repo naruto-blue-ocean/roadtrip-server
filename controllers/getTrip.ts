@@ -12,6 +12,15 @@ const getTrip = (req : any, res : any) => {
 `SELECT td.destination_id, tdp.poi_id, d.name, p.name, d.lat, d.lng FROM trip_destination td
 INNER JOIN trip_destination_poi tdp ON td.id=tdp.trip_destination_id INNER JOIN destinations d ON d.id = td.destination_id INNER JOIN pois p ON p.id=tdp.poi_id`
 
+
+const query1 = `WITH cumulative AS (SELECT td.destination_id, tdp.poi_id, d.name AS destination_name, p.name AS poi_name, d.lat, d.lng, td.order_number AS destination_order, tdp.order_number AS POI_ORDER FROM trip_destination td
+  INNER JOIN trip_destination_poi tdp ON td.id=tdp.trip_destination_id INNER JOIN destinations d ON d.id = td.destination_id INNER JOIN pois p ON p.id=tdp.poi_id WHERE td.trip_id = 1), agg AS (SELECT json_build_object('id', poi_id, 'order_number', poi_order, 'name', poi_name) FROM cumulative WHERE destination_id = '3' ORDER BY poi_order) SELECT JSON_AGG(json_build_object) FROM agg`;
+const query2 = `WITH agg AS (SELECT json_build_object('id', id, 'order_number', order_number, 'name', name)
+FROM (SELECT tdp.poi_id AS id, tdp.order_number AS order_number, pois.name AS name
+  FROM trip_destination_poi AS tdp INNER JOIN pois ON tdp.poi_id = pois.id
+  WHERE tdp.trip_destination_id = 3 ORDER BY order_number) AS poi_item)
+  SELECT json_agg(json_build_object) FROM agg`;
+const query3 = `  select d.id AS id, d.name AS cityName, d.lat AS lat, d.lng AS lng, td.order_number AS order_number FROM destinations AS d INNER JOIN trip_destination AS td ON d.id = td.destination_id WHERE td.id = 3`;
 module.exports = getTrip;
 
 
@@ -26,6 +35,7 @@ const sampleTrip = {
       cityName: 'San Francisco',
       lat: 'abc',
       lang: 'xyz',
+      order_number: 1,
       POIs: [
         {
           id: 1,
@@ -49,6 +59,7 @@ const sampleTrip = {
       cityName: 'San Diego',
       lat: 'abc',
       lang: 'xyz',
+      order_number: 2,
       POIs: [
         {
           id: 4,
@@ -72,6 +83,7 @@ const sampleTrip = {
       cityName: 'Los Angeles',
       lat: 'abc',
       lang: 'xyz',
+      order_number: 3,
       POIs: [
         {
           id: 7,
@@ -92,5 +104,3 @@ const sampleTrip = {
     }
   ]
 }*/
-
-WITH agg AS (SELECT json_build_object('id', id, 'order_number', order_number, 'name', name) FROM (SELECT tdp.poi_id AS id, tdp.order_number AS order_number, pois.name AS name FROM trip_destination_poi AS tdp INNER JOIN pois ON tdp.poi_id = pois.id WHERE tdp.trip_destination_id = 3 ORDER BY order_number) AS poi_item) SELECT json_agg(json_build_object) FROM agg;
