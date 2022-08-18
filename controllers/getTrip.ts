@@ -19,69 +19,78 @@ module.exports = getTrip;
 
 const sampleTrip = {
   id: 100,
+  name: 'Fun Girls Trip',
   destinations: [
     {
       id: 200,
       cityName: 'San Francisco',
+      lat: 'abc',
+      lang: 'xyz',
       POIs: [
         {
           id: 1,
           name: 'Golden Gate Bridge',
-          details: 'An iconic red bridge'
+          order_number: 1
         },
         {
           id: 2,
           name: 'Dolores Park',
-          details: 'A city park'
+          order_number: 2
         },
         {
           id: 3,
           name: 'Dumpling Home',
-          details: 'A Chinese restaurant specializing in dumplings'
+          order_number: 3
         }
       ]
     },
     {
       id: 300,
       cityName: 'San Diego',
+      lat: 'abc',
+      lang: 'xyz',
       POIs: [
         {
           id: 4,
           name: 'Legoland',
-          details: 'An amusement park featuring Legos'
+          order_number: 1
         },
         {
           id: 5,
           name: 'Tacos El Gordo',
-          details: 'A famous Mexican restaurant'
+          order_number: 2
         },
         {
           id: 6,
           name: 'UC San Diego',
-          details: 'A public university'
+          order_number: 3
         }
       ]
     },
     {
       id: 400,
       cityName: 'Los Angeles',
+      lat: 'abc',
+      lang: 'xyz',
       POIs: [
         {
           id: 7,
           name: 'Griffith Observatory',
-          details: 'An observatory with telecopes and exhibits'
+          order_number: 1
         },
         {
           id: 8,
           name: 'Disneyland',
-          details: 'The happiest place on Earth'
+          order_number: 2
         },
         {
           id: 9,
           name: 'Hollywood',
-          details: 'A hub for entertainment and media'
+          order_number: 3
         }
       ]
     }
   ]
 }*/
+
+WITH agg AS (SELECT json_build_object('id', id, 'order_number', order_number, 'name', name) FROM (SELECT tdp.poi_id AS id, tdp.order_number AS order_number, pois.name AS name FROM trip_destination_poi AS tdp INNER JOIN pois ON tdp.poi_id = pois.id WHERE tdp.trip_destination_id = 3 ORDER BY order_number) AS poi_item) SELECT json_agg(json_build_object) FROM agg;
