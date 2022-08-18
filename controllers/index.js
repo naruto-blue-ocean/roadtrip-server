@@ -6,11 +6,12 @@
 
 exports.getNote = require("./getNote.ts");
 exports.updateNote = require("./updateNote.ts");
-
-exports.getNote = require("./getNote.ts");
+exports.getTripID = require('./getTripID.js');
 exports.postCities = require("./postCities.ts");
-exports.addPOI = require("./addPOI.ts");
 exports.shareTrip = require("./shareTrip.js");
+
+exports.addPOI = require("./addPOI.ts");
+
 //Trip Viewer / Editor routes
 exports.getTrip = require('./getTrip.ts');
 exports.deleteDestination = require('./deleteDestination.ts')
@@ -21,4 +22,4 @@ exports.updatePOIOrder = require('./updatePOIOrder');
 
 exports.getUserTrips = require("./getUserTrips.ts");
 exports.getArchiveTrips = require("./getArchiveTrips.ts");
-
+exports.postNewTrip = require("./postNewTrip.ts");
