@@ -12,7 +12,7 @@ exports.postCities = require("./postCities.ts");
 
 
 
-//Trip Viewer / Editor foutes
+//Trip Viewer / Editor routes
 exports.getTrip = require('./getTrip.ts');
 exports.deleteDestination = require('./deleteDestination.ts')
 exports.deletePOI = require('./deletePOI.ts')
