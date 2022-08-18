@@ -3,8 +3,12 @@ var express = require('express');
 
 const addPOI =  (req : any, res : any) => {
   console.log('In addPOI req.body = ', req.body)
+  const {POIname, desID, POIID, order} = req.body;
 
-  const queryString = `INSERT INTO pois (id, name) VALUES ('${req.body.id}', '${req.body.name}');`
+  const queryString = `BEGIN;
+    INSERT INTO pois (id, name) VALUES ('${POIID}', '${POIname}');
+    INSERT INTO trip_destination_poi (trip_destination_id, poi_id, order_number) VALUES ('${desID}', '${POIID}', '${order}');
+    COMMIT;`
 
   client.query(queryString)
     .then(() => {
