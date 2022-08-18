@@ -9,3 +9,6 @@ exports.updateNote = require("./updateNote.ts");
 
 exports.getNote = require("./getNote.ts");
 exports.postCities = require("./postCities.ts");
+
+exports.getUserTrips = require("./getUserTrips.ts");
+exports.getArchiveTrips = require("./getArchiveTrips.ts");
