@@ -43,6 +43,8 @@ app.get('/trips/:user_email', controllers.getUserTrips)
 app.get('/trips/archive/:user_email', controllers.getArchiveTrips)
 app.post('/trips', controllers.postNewTrip)
 
+app.post('/addPOI', controllers.addPOI);
+
 //Notes
 app.get('/notes/:user_email/:poi_id', controllers.getNote)
 app.put('/updateNote', controllers.updateNote)
