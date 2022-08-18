@@ -12,3 +12,4 @@ exports.postCities = require("./postCities.ts");
 
 exports.getUserTrips = require("./getUserTrips.ts");
 exports.getArchiveTrips = require("./getArchiveTrips.ts");
+exports.postNewTrip = require("./postNewTrip.ts");

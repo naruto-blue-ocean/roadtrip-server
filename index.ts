@@ -32,6 +32,7 @@ app.post(
 //Trips
 app.get('/trips/:user_email', controllers.getUserTrips)
 app.get('/trips/archive/:user_email', controllers.getArchiveTrips)
+app.post('/trips', controllers.postNewTrip)
 
 //Notes
 app.get('/notes/:user_email/:poi_id', controllers.getNote)
