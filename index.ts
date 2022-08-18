@@ -8,10 +8,13 @@ import { Request, Response } from 'express';
 const passport = require('passport');
 require('./db/passportConfig.ts')(passport);
 
+const flash = require('express-flash');
+
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}))
+app.use(flash())
 
 app.post(
   "/auth/signup",
@@ -23,9 +26,10 @@ app.post(
 );
 
 app.post("/auth/login",
-  passport.authenticate("local-login", { session: false }),
+  passport.authenticate("local-login", { session: false}),
   (req: any, res: any) => {
-    console.log(res)
+    // console.log(res)
+    console.log('req is...', req.body)
     res.json({ user: req.user });
   }
 );
