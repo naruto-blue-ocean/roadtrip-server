@@ -1,4 +1,4 @@
-export {};
+export { };
 require('dotenv').config()
 // import controllers from './controllers';
 const controllers = require('./controllers')
@@ -13,7 +13,7 @@ const flash = require('express-flash');
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(flash())
 
 app.post(
@@ -34,41 +34,66 @@ app.post("/auth/login",
   }
 );
 
+// app.post("/auth/login",
+//   // @ts-ignore
+//   (req, res, next) => {
+//     passport.authenticate("local-login", {
+//       session:
+//         // @ts-ignore
+//         false
+//     }, (err: any, user: any, info:any) => {
+//       console.log('user is...', user)
+//       console.log('info is...', info)
+
+//       if (err) {
+//         return next(err)
+//       }
+//       if (!user) {
+//         res.status(401).send(info)
+//       }
+
+//       res.json( {user: req.user})
+
+//       })(req, res, next)
+//     }
 
 
-app.post('/share/:email_address', controllers.shareTrip);
-
-app.get(
-  '/notes/:user_email/:poi_id', controllers.getNote
-)
+//     );
 
 
-app.get('/trips/:user_email', controllers.getUserTrips)
-app.get('/trips/archive/:user_email', controllers.getArchiveTrips)
-app.post('/trips', controllers.postNewTrip)
+    app.post('/share/:email_address/:trip_id', controllers.shareTrip);
 
-//Notes
-app.get('/notes/:user_email/:poi_id', controllers.getNote)
-app.put('/updateNote', controllers.updateNote)
-
-//Cities
-app.post('/postCities', controllers.postCities)
+    app.get(
+      '/notes/:user_email/:poi_id', controllers.getNote
+    )
 
 
-app.post(
-  '/postCities', controllers.postCities
-)
+    app.get('/trips/:user_email', controllers.getUserTrips)
+    app.get('/trips/archive/:user_email', controllers.getArchiveTrips)
+    app.post('/trips', controllers.postNewTrip)
 
-app.get('/trips/destinations/:trip_id', controllers.getTrip);
+    //Notes
+    app.get('/notes/:user_email/:poi_id', controllers.getNote)
+    app.put('/updateNote', controllers.updateNote)
 
-// app.delete('/trips/:tripId/destinations/:destinationId', controllers.deleteDestination);
-// app.delete('/trips/:tripId/destinations/:destinationId/pois/:poiId', controllers.deletePOI);
+    //Cities
+    app.post('/postCities', controllers.postCities)
 
-// //to update the order of destinations in a specific trip
-// app.put('/trips/:tripId/destinations', controllers.updateDestinationOrder);
 
-// //to update the order of POIs in a specific trip
-// app.put('/trips/:tripId/destinations/:destinationId/pois', controllers.updatePOIOrder);
+    app.post(
+      '/postCities', controllers.postCities
+    )
 
-//Server initialization
-app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}`))
+    app.get('/trips/destinations/:trip_id', controllers.getTrip);
+
+    // app.delete('/trips/:tripId/destinations/:destinationId', controllers.deleteDestination);
+    // app.delete('/trips/:tripId/destinations/:destinationId/pois/:poiId', controllers.deletePOI);
+
+    // //to update the order of destinations in a specific trip
+    // app.put('/trips/:tripId/destinations', controllers.updateDestinationOrder);
+
+    // //to update the order of POIs in a specific trip
+    // app.put('/trips/:tripId/destinations/:destinationId/pois', controllers.updatePOIOrder);
+
+    //Server initialization
+    app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}`))
