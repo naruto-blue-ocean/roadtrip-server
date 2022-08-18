@@ -2,33 +2,46 @@ var express = require('express');
 var client = require('../db/index.js');
 
 const getTrip = (req : any, res : any) => {
+
   console.log('getTrip controller invoked! here is req.params', req.query);
   const trip_id: string = req.params.trip_id;
+
+  const query = `SELECT td.order_number destination_order, tdp.order_number poi_order,tdp.poi_id, d.name destination_name, p.name poi_name, d.lat, d.lng FROM trip_destination td
+  LEFT JOIN trip_destination_poi tdp ON td.id=tdp.trip_destination_id LEFT JOIN destinations d ON d.id = td.destination_id LEFT JOIN pois p ON p.id=tdp.poi_id WHERE td.trip_id = '${trip_id}' ORDER BY td.order_number, tdp.order_number`
+
   console.log('here is the trip_id', trip_id);
-  res.end();
-  const query = `SELECT * FROM trip_destination, trip_destination_poi WHERE trip_id = ${trip_id} AND trip_destination.id = `
+  client.query(query)
+  .then((data:any) => {
+    res.status(200);
+    res.send(JSON.stringify(data.rows))
+  })
+
 }
 
-`SELECT td.destination_id, tdp.poi_id, d.name, p.name, d.lat, d.lng FROM trip_destination td
-INNER JOIN trip_destination_poi tdp ON td.id=tdp.trip_destination_id INNER JOIN destinations d ON d.id = td.destination_id INNER JOIN pois p ON p.id=tdp.poi_id`
+let testquery = `SELECT td.trip_id, td.order_number destination_order, tdp.order_number poi_order,tdp.poi_id, d.name, p.name, d.lat, d.lng FROM trip_destination td
+LEFT JOIN trip_destination_poi tdp ON td.id=tdp.trip_destination_id LEFT JOIN destinations d ON d.id = td.destination_id LEFT JOIN pois p ON p.id=tdp.poi_id WHERE td.trip_id = '1' ORDER BY td.order_number`
 
+// let tripidprop = '1'
+// let testq2 = `SELECT
+// d.name destination_name,
+// d.lat,
+// d.lng
+// FROM destinations d INNER JOIN trip_destination td ON td.trip_id = '${tripidprop}'`
 
-const query1 = `WITH cumulative AS (SELECT td.destination_id, tdp.poi_id, d.name AS destination_name, p.name AS poi_name, d.lat, d.lng, td.order_number AS destination_order, tdp.order_number AS POI_ORDER FROM trip_destination td
-  INNER JOIN trip_destination_poi tdp ON td.id=tdp.trip_destination_id INNER JOIN destinations d ON d.id = td.destination_id INNER JOIN pois p ON p.id=tdp.poi_id WHERE td.trip_id = 1), agg AS (SELECT json_build_object('id', poi_id, 'order_number', poi_order, 'name', poi_name) FROM cumulative WHERE destination_id = '3' ORDER BY poi_order) SELECT JSON_AGG(json_build_object) FROM agg`;
-const query2 = `WITH agg AS (SELECT json_build_object('id', id, 'order_number', order_number, 'name', name)
-FROM (SELECT tdp.poi_id AS id, tdp.order_number AS order_number, pois.name AS name
-  FROM trip_destination_poi AS tdp INNER JOIN pois ON tdp.poi_id = pois.id
-  WHERE tdp.trip_destination_id = 3 ORDER BY order_number) AS poi_item)
-  SELECT json_agg(json_build_object) FROM agg`;
-const query3 = `  select d.id AS id, d.name AS cityName, d.lat AS lat, d.lng AS lng, td.order_number AS order_number FROM destinations AS d INNER JOIN trip_destination AS td ON d.id = td.destination_id WHERE td.id = 3`;
+// const query1 = `WITH cumulative AS (SELECT td.destination_id, tdp.poi_id, d.name AS destination_name, p.name AS poi_name, d.lat, d.lng, td.order_number AS destination_order, tdp.order_number AS POI_ORDER FROM trip_destination td
+//   INNER JOIN trip_destination_poi tdp ON td.id=tdp.trip_destination_id INNER JOIN destinations d ON d.id = td.destination_id INNER JOIN pois p ON p.id=tdp.poi_id WHERE td.trip_id = 1), agg AS (SELECT json_build_object('id', poi_id, 'order_number', poi_order, 'name', poi_name) FROM cumulative WHERE destination_id = '3' ORDER BY poi_order) SELECT JSON_AGG(json_build_object) FROM agg`;
+// const query2 = `WITH agg AS (SELECT json_build_object('id', id, 'order_number', order_number, 'name', name)
+// FROM (SELECT tdp.poi_id AS id, tdp.order_number AS order_number, pois.name AS name
+//   FROM trip_destination_poi AS tdp INNER JOIN pois ON tdp.poi_id = pois.id
+//   WHERE tdp.trip_destination_id = 3 ORDER BY order_number) AS poi_item)
+//   SELECT json_agg(json_build_object) FROM agg`;
+// const query3 = `  select d.id AS id, d.name AS cityName, d.lat AS lat, d.lng AS lng, td.order_number AS order_number FROM destinations AS d INNER JOIN trip_destination AS td ON d.id = td.destination_id WHERE td.id = 3`;
 module.exports = getTrip;
 
 
 /*
 
 const sampleTrip = {
-  id: 100,
-  name: 'Fun Girls Trip',
   destinations: [
     {
       id: 200,
