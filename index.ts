@@ -26,7 +26,7 @@ app.post(
 );
 
 app.post("/auth/login",
-  passport.authenticate("local-login", { session: false}),
+  passport.authenticate("local-login", { session: false }),
   (req: any, res: any) => {
     // console.log(res)
     console.log('req is...', req.body)
@@ -61,39 +61,36 @@ app.post("/auth/login",
 //     );
 
 
-    app.post('/share/:email_address/:trip_id', controllers.shareTrip);
-
-    app.get(
-      '/notes/:user_email/:poi_id', controllers.getNote
-    )
+app.post('/share/:email_address/:trip_id', controllers.shareTrip);
 
 
-    app.get('/trips/:user_email', controllers.getUserTrips)
-    app.get('/trips/archive/:user_email', controllers.getArchiveTrips)
-    app.post('/trips', controllers.postNewTrip)
+app.post('/addPOI', controllers.addPOI);
 
-    //Notes
-    app.get('/notes/:user_email/:poi_id', controllers.getNote)
-    app.put('/updateNote', controllers.updateNote)
+//Notes
+app.get('/notes/:user_email/:poi_id', controllers.getNote)
+app.put('/updateNote', controllers.updateNote)
 
-    //Cities
-    app.post('/postCities', controllers.postCities)
+//Cities
+app.post('/postCities', controllers.postCities)
 
 
-    app.post(
-      '/postCities', controllers.postCities
-    )
+app.get('/trips/:user_email', controllers.getUserTrips)
+app.get('/trips/archive/:user_email', controllers.getArchiveTrips)
+app.post('/trips', controllers.postNewTrip)
 
-    app.get('/trips/destinations/:trip_id', controllers.getTrip);
+//Notes
+app.get('/notes/:user_email/:poi_id', controllers.getNote)
+app.put('/updateNote', controllers.updateNote)
 
-    // app.delete('/trips/:tripId/destinations/:destinationId', controllers.deleteDestination);
-    // app.delete('/trips/:tripId/destinations/:destinationId/pois/:poiId', controllers.deletePOI);
+//Cities
+app.post('/postCities', controllers.postCities)
 
-    // //to update the order of destinations in a specific trip
-    // app.put('/trips/:tripId/destinations', controllers.updateDestinationOrder);
 
-    // //to update the order of POIs in a specific trip
-    // app.put('/trips/:tripId/destinations/:destinationId/pois', controllers.updatePOIOrder);
+app.post(
+  '/postCities', controllers.postCities
+)
 
-    //Server initialization
-    app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}`))
+app.get('/trips/destinations/:trip_id', controllers.getTrip);
+
+//Server initialization
+app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}`))
