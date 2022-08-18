@@ -8,7 +8,7 @@ const createUser = async (email, password) => {
   const hash = await bcrypt.hash(password, salt);
 
   const data = await client.query(
-    "INSERT INTO users(email, password) VALUES ($1, $2) RETURNING id, email, password",
+    "INSERT INTO users(email, password) VALUES ($1, $2) RETURNING email, password",
     [email, hash]
   );
 

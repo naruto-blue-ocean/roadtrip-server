@@ -16,11 +16,12 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS trips (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
-  status NOT NULL
+  status trip_status NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS destinations (
   id VARCHAR(255) PRIMARY KEY UNIQUE, -- id here is pulled from Place AutoComplete API
+  -- id should match search from API call
   name VARCHAR(255) NOT NULL,
   lat DECIMAL NOT NULL,
   lng DECIMAL NOT NULL
@@ -47,16 +48,19 @@ CREATE TABLE IF NOT EXISTS user_trip (
   UNIQUE (user_email, trip_id)
 );
 
-CREATE TABLE IF NOT EXISTS trip_destination (
+CREATE TABLE IF NOT EXISTS trip_destination_poi (
   id SERIAL PRIMARY KEY,
   trip_id INTEGER NOT NULL REFERENCES trips(id),
   destination_id VARCHAR(255) NOT NULL REFERENCES destinations(id),
-  UNIQUE (trip_id, destination_id)
-)
-
-CREATE TABLE IF NOT EXISTS trip_destination_poi (
-  id SERIAL PRIMARY KEY,
-  trip_destination_id INTEGER NOT NULL REFERENCES trip_destination(id),
   poi_id VARCHAR(255) NOT NULL REFERENCES pois(id),
-  UNIQUE (trip_destination_id, poi_id)
+  UNIQUE (trip_id, destination_id, poi_id)
 );
+
+CREATE TABLE IF NOT EXISTS user_poi_note (
+  id SERIAL PRIMARY KEY,
+  user_email VARCHAR(255) NOT NULL REFERENCES users(email),
+  poi_id VARCHAR(255) NOT NULL REFERENCES pois(id),
+  note_id INTEGER NOT NULL REFERENCES notes(id),
+  UNIQUE (user_email, poi_id)
+);
+
