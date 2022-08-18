@@ -1,9 +1,10 @@
 \c roadtrip;
-
+--users
 INSERT INTO users (email, password) VALUES ('johnny@email.com', 'johnnypass');
 INSERT INTO users (email, password) VALUES ('testuser@email.com', 'testuserpass');
 INSERT INTO users (email, password) VALUES ('testemail', 'testpassword');
 INSERT INTO users (email, password) VALUES ('jason@test.com', 'password');
+INSERT INTO users (email, password) VALUES ('noa@email.com', 'noapass');
 
 INSERT INTO trips (name, status) VALUES ('Planned trip 2020', 'planned');
 INSERT INTO trips (name, status) VALUES ('Completed trip 2021', 'completed');
@@ -13,7 +14,19 @@ INSERT INTO destinations (id, name, lat, lng) VALUES ('ChIJfcS6fx7LwoARZYDiqXgXL
 INSERT INTO destinations (id, name, lat, lng) VALUES ('ChIJSzbuqjfD3IARckzIEB2RVeg', 'Tustin', '33.7420005', '--117.8236391');
 INSERT INTO destinations (id, name, lat, lng) VALUES ('ChIJpYrtFq413YARX4eG8Fd9FAQ', 'San Pedro', '33.7360619', '--118.2922461');
 
+--trips and user_trip
+WITH id as (INSERT INTO trips (name, status) VALUES ('THE TRIPPIEST TRIP', 'planned') RETURNING id)
+INSERT INTO user_trip (user_email, trip_id) VALUES ('noa@email.com', (SELECT * FROM id));
+WITH id as (INSERT INTO trips (name, status) VALUES ('The 4th Great Ninja War', 'planned') RETURNING id)
+INSERT INTO user_trip (user_email, trip_id) VALUES ('noa@email.com', (SELECT * FROM id));
+WITH id as (INSERT INTO trips (name, status) VALUES ('The journey to a job in Software Engineering', 'active') RETURNING id)
+INSERT INTO user_trip (user_email, trip_id) VALUES ('noa@email.com', (SELECT * FROM id));
+WITH id as (INSERT INTO trips (name, status) VALUES ('Going to Mexico', 'trash') RETURNING id)
+INSERT INTO user_trip (user_email, trip_id) VALUES ('noa@email.com', (SELECT * FROM id));
+WITH id as (INSERT INTO trips (name, status) VALUES ('SDC', 'completed') RETURNING id)
+INSERT INTO user_trip (user_email, trip_id) VALUES ('noa@email.com', (SELECT * FROM id));
 
+--pois
 INSERT INTO pois (id, name) VALUES ('jIxS5Td2o0gBWx0G0qx59Q', 'San Jose Municipal Rose Garden');
 INSERT INTO pois (id, name) VALUES ('testid', 'testpoiname');
 INSERT INTO pois (id, name) VALUES ('Z6gkivXc4B_eG5oj4OgaxQ', 'Computer History Museum');
@@ -52,6 +65,8 @@ INSERT INTO trip_destination_poi (trip_destination_id, poi_id, order_number) VAL
 INSERT INTO trip_destination_poi (trip_destination_id, poi_id, order_number) VALUES (3, 'gR9DTbKCvezQlqvD7_FzPw', 3);
 
 
+--notes
 INSERT INTO notes (content, user_email, poi_id) VALUES ('hi this is my test note', 'testemail', 'testid');
 INSERT INTO notes (content, user_email, poi_id) VALUES ('many rose, much smell, very red', 'johnny@email.com', 'jIxS5Td2o0gBWx0G0qx59Q');
 INSERT INTO notes (content, user_email, poi_id) VALUES ('love me some computers', 'johnny@email.com', 'Z6gkivXc4B_eG5oj4OgaxQ');
+

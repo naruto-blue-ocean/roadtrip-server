@@ -13,6 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}))
 
+//Authorization
 app.post(
   "/auth/signup",
   passport.authenticate("local-signup", { session: false }),
@@ -28,11 +29,21 @@ app.post(
   }
 );
 
+
 app.get(
   '/notes/:user_email/:poi_id', controllers.getNote
 )
 
+
+app.get('/trips/:user_email', controllers.getUserTrips)
+app.get('/trips/archive/:user_email', controllers.getArchiveTrips)
+
+//Notes
+app.get('/notes/:user_email/:poi_id', controllers.getNote)
 app.put('/updateNote', controllers.updateNote)
+
+//Cities
+app.post('/postCities', controllers.postCities)
 
 
 app.post(
@@ -52,4 +63,6 @@ app.put('/trips/:tripId/destinations/:destinationId/pois', controllers.updatePOI
 
 
 
+
+//Server initialization
 app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}`))

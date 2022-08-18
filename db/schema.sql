@@ -4,7 +4,7 @@ CREATE DATABASE roadtrip;
 \c roadtrip;
 
 -- create non-relational tables
-CREATE TYPE trip_status AS ENUM ('completed', 'active', 'planned');
+CREATE TYPE trip_status AS ENUM ('completed', 'active', 'planned', 'trash');
 
 CREATE TABLE IF NOT EXISTS users (
   -- id SERIAL PRIMARY KEY, -- id of user depends on authentication step

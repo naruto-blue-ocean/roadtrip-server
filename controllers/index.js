@@ -19,3 +19,6 @@ exports.deletePOI = require('./deletePOI.ts')
 
 exports.updateDestinationOrder = require('./updateDestinationOrder');
 exports.updatePOIOrder = require('./updatePOIOrder');
+
+exports.getUserTrips = require("./getUserTrips.ts");
+exports.getArchiveTrips = require("./getArchiveTrips.ts");
