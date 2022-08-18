@@ -45,7 +45,7 @@ app.delete('/trips/destinations/:destination_id', controllers.deleteDestination)
 app.delete('/trips/destinations/pois/:poi_id', controllers.deletePOI)
 
 //to update the order of destinations in a specific trip
-app.put('/trips/destinations', controllers.updateDestinationOrder)
+app.put('/trips/:trip_id/destinations', controllers.updateDestinationOrder)
 
 //to update the order of POIs in a specific trip
 app.put('/trips/destinations/pois', controllers.updatePOIOrder)

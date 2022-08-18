@@ -30,24 +30,24 @@ INSERT INTO pois (id, name) VALUES ('test poi id 2', 'test poi two');
 INSERT INTO pois (id, name) VALUES ('test poi id 3', 'test poi three');
 
 
-INSERT INTO destinations (id, name, lat, lng) VALUES (2, 'hi', '33.8316745', '-118.281693');
-INSERT INTO destinations (id, name, lat, lng) VALUES (3, 'hey', '33.7420005', '--117.8236391');
-INSERT INTO destinations (id, name, lat, lng) VALUES (4, 'hello', '33.7360619', '--118.2922461');
+INSERT INTO destinations (id, name, lat, lng) VALUES ('2', 'hi', '33.8316745', '-118.281693');
+INSERT INTO destinations (id, name, lat, lng) VALUES ('3', 'hey', '33.7420005', '--117.8236391');
+INSERT INTO destinations (id, name, lat, lng) VALUES ('4', 'hello', '33.7360619', '--118.2922461');
 
 
 
 
-INSERT INTO trip_destination (trip_id, destination_id, order_number) VALUES (1, 2, 1);
-INSERT INTO trip_destination (trip_id, destination_id, order_number) VALUES (1, 2, 2);
-INSERT INTO trip_destination (trip_id, destination_id, order_number) VALUES (1, 2, 3);
+INSERT INTO trip_destination (trip_id, destination_id, order_number) VALUES (1, '2', 1);
+INSERT INTO trip_destination (trip_id, destination_id, order_number) VALUES (1, '3', 2);
+INSERT INTO trip_destination (trip_id, destination_id, order_number) VALUES (1, '4', 3);
 
 INSERT INTO trip_destination_poi (trip_destination_id, poi_id, order_number) VALUES (2, 'test poi id 1', 1);
 INSERT INTO trip_destination_poi (trip_destination_id, poi_id, order_number) VALUES (2, 'test poi id 2', 2);
 INSERT INTO trip_destination_poi (trip_destination_id, poi_id, order_number) VALUES (2, 'test poi id 3', 3);
 
-INSERT INTO trip_destination (trip_id, destination_id, order_number) VALUES (1, 3, 1);
-INSERT INTO trip_destination (trip_id, destination_id, order_number) VALUES (1, 3, 2);
-INSERT INTO trip_destination (trip_id, destination_id, order_number) VALUES (1, 3, 3);
+INSERT INTO trip_destination (trip_id, destination_id, order_number) VALUES (2, '2', 2);
+INSERT INTO trip_destination (trip_id, destination_id, order_number) VALUES (2, '3', 1);
+INSERT INTO trip_destination (trip_id, destination_id, order_number) VALUES (2, '4', 3);
 
 INSERT INTO trip_destination_poi (trip_destination_id, poi_id, order_number) VALUES (4, 'jIxS5Td2o0gBWx0G0qx59Q', 1);
 INSERT INTO trip_destination_poi (trip_destination_id, poi_id, order_number) VALUES (5, 'Z6gkivXc4B_eG5oj4OgaxQ', 2);

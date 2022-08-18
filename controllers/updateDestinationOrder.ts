@@ -1,18 +1,30 @@
 var express = require('express');
 var client = require('../db/index.js');
 
-const updateDestinationOrder = (req : any, res : any) => {
-  console.log('deletePOI controller invoked!');
-  const querystring = `SELECT * FROM notes WHERE user_email = '${req.params.user_email}' AND poi_id = '${req.params.poi_id}';`
 
-  client.query(querystring).then((data: any) => {
-    console.log(data.rows);
-    res.status(200);
-    res.end(JSON.stringify(data.rows[0]));
-  }).catch((err: any) => {
-    console.log('error at controller getNote.ts', err);
-  })
-  // res.end('got note')
+/* client will send PUT request to /trips/:trip_id/destinations
+body of req will be an object
+{
+  destination_id # 1: new order 1,
+  destination_id # 2: new order 2,
+}
+*/
+const updateDestinationOrder = (req : any, res : any) => {
+  const queryInsertStr = Object.entries(req.body).map(([destination_id, order_number]) =>  (`('${destination_id}', ${order_number})`)).join(', ');
+  const query = `UPDATE trip_destination AS td
+    SET order_number = temp.order_number
+    FROM (VALUES ${queryInsertStr})
+    AS temp(destination_id, order_number)
+    WHERE td.destination_id = temp.destination_id
+    AND trip_id = ${req.params.trip_id}`;
+
+  client.query(query)
+    .then(() => {
+      res.status(200).end();
+    })
+    .catch((err: any) => {
+      res.status(500).send(err);
+    });
 }
 
 module.exports = updateDestinationOrder;

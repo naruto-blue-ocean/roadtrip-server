@@ -5,7 +5,7 @@ const getTrip = (req : any, res : any) => {
   console.log('getTrip controller invoked! here is req.params', req.query);
   const trip_id: string = req.params.trip_id;
   console.log('here is the trip_id', trip_id);
-
+  res.end();
   const query = `SELECT * FROM trip_destination, trip_destination_poi WHERE trip_id = ${trip_id} AND trip_destination.id = `
 }
 
