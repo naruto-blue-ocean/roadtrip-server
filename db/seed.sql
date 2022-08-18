@@ -5,6 +5,8 @@ INSERT INTO users (email, password) VALUES ('testuser@email.com', 'testuserpass'
 INSERT INTO users (email, password) VALUES ('testemail', 'testpassword');
 INSERT INTO users (email, password) VALUES ('jason@test.com', 'password');
 INSERT INTO users (email, password) VALUES ('noa@email.com', 'noapass');
+-- INSERT INTO users (email, password) VALUES ('test@test.com', 'test');
+
 
 INSERT INTO trips (name, status) VALUES ('Planned trip 2020', 'planned');
 INSERT INTO trips (name, status) VALUES ('Completed trip 2021', 'completed');
@@ -36,6 +38,7 @@ INSERT INTO pois (id, name) VALUES ('iNXg9eNarEfGJ5D7oTmYZQ', 'Shoreline Lake Bo
 INSERT INTO user_trip (user_email, trip_id) VALUES ('jason@test.com', 1);
 INSERT INTO user_trip (user_email, trip_id) VALUES ('jason@test.com', 2);
 INSERT INTO user_trip (user_email, trip_id) VALUES ('jason@test.com', 3);
+-- INSERT INTO user_trip (user_email, trip_id) VALUES ('test@test.com', 1);
 
 
 INSERT INTO pois (id, name) VALUES ('test poi id 1', 'test poi one');
