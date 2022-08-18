@@ -34,6 +34,8 @@ app.post("/auth/login",
   }
 );
 
+
+
 app.post('/share/:email_address', controllers.shareTrip);
 
 app.get(
@@ -43,6 +45,7 @@ app.get(
 
 app.get('/trips/:user_email', controllers.getUserTrips)
 app.get('/trips/archive/:user_email', controllers.getArchiveTrips)
+app.post('/trips', controllers.postNewTrip)
 
 //Notes
 app.get('/notes/:user_email/:poi_id', controllers.getNote)
@@ -56,16 +59,16 @@ app.post(
   '/postCities', controllers.postCities
 )
 
-app.get('/trips/:trip_id', controllers.getTrip);
+app.get('/trips/destinations/:trip_id', controllers.getTrip);
 
-app.delete('/trips/:tripId/destinations/:destinationId', controllers.deleteDestination);
-app.delete('/trips/:tripId/destinations/:destinationId/pois/:poiId', controllers.deletePOI);
+// app.delete('/trips/:tripId/destinations/:destinationId', controllers.deleteDestination);
+// app.delete('/trips/:tripId/destinations/:destinationId/pois/:poiId', controllers.deletePOI);
 
-//to update the order of destinations in a specific trip
-app.put('/trips/:tripId/destinations', controllers.updateDestinationOrder);
+// //to update the order of destinations in a specific trip
+// app.put('/trips/:tripId/destinations', controllers.updateDestinationOrder);
 
-//to update the order of POIs in a specific trip
-app.put('/trips/:tripId/destinations/:destinationId/pois', controllers.updatePOIOrder);
+// //to update the order of POIs in a specific trip
+// app.put('/trips/:tripId/destinations/:destinationId/pois', controllers.updatePOIOrder);
 
 //Server initialization
 app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}`))

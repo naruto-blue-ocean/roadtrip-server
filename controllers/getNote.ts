@@ -11,8 +11,11 @@ const getNote = (req : any, res : any) => {
     res.end(JSON.stringify(data.rows[0]));
   }).catch((err: any) => {
     console.log('error at controller getNote.ts', err);
+    res.status(400);
+    res.end('error 400');
   })
   // res.end('got note')
 }
 
 module.exports = getNote;
+
