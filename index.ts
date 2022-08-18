@@ -49,11 +49,7 @@ app.put('/updateNote', controllers.updateNote)
 
 //Cities
 app.post('/postCities', controllers.postCities)
-
-
-app.post(
-  '/postCities', controllers.postCities
-)
+app.post('/postCities', controllers.postCities)
 
 app.get('/trips/destinations/:trip_id', controllers.getTrip);
 
