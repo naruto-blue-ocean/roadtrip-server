@@ -41,7 +41,7 @@ app.post(
 
 app.get('/trips/:trip_id', controllers.getTrip);
 
-app.delete('/trips/:tripId/destinations/:destination_id', controllers.deleteDestination);
+app.delete('/trips/:tripId/destinations/:destinationId', controllers.deleteDestination);
 app.delete('/trips/:tripId/destinations/:destinationId/pois/:poiId', controllers.deletePOI);
 
 //to update the order of destinations in a specific trip

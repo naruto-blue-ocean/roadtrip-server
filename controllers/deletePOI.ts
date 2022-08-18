@@ -1,8 +1,9 @@
 var express = require('express');
 var client = require('../db/index.js');
 
+// client will send DELETE request to /trips/:tripId/destinations/:destinationId/pois/:poiId
+
 const deletePOI = (req : any, res : any) => {
-  console.log(req.params);
   const query = `DELETE FROM trip_destination_poi WHERE poi_id = '${req.params.poiId}'
   AND trip_destination_id = (SELECT id FROM trip_destination WHERE trip_id =
   ${req.params.tripId} AND destination_id = '${req.params.destinationId}')`;
