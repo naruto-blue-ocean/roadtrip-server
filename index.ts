@@ -29,7 +29,7 @@ app.post("/auth/login",
   }
 );
 
-app.post('/share', controllers.getTripID);
+app.post('/share/:email_address', controllers.shareTrip);
 
 app.get(
   '/notes/:user_email/:poi_id', controllers.getNote

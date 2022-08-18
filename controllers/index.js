@@ -8,3 +8,4 @@ exports.getNote = require("./getNote.ts");
 exports.updateNote = require("./updateNote.ts");
 exports.getTripID = require('./getTripID.js');
 exports.postCities = require("./postCities.ts");
+exports.shareTrip = require("./shareTrip.js");
