@@ -6,7 +6,7 @@ const getTrip = (req : any, res : any) => {
   // console.log('getTrip controller invoked! here is req.params', req.query);
   const trip_id: string = req.params.trip_id;
 
-  const query = `SELECT td.order_number destination_order, tdp.order_number poi_order,tdp.poi_id, d.name destination_name, p.name poi_name, d.lat, d.lng FROM trip_destination td
+  const query = `SELECT td.destination_id, td.order_number destination_order, tdp.order_number poi_order,tdp.poi_id, d.name destination_name, p.name poi_name, d.lat, d.lng FROM trip_destination td
   LEFT JOIN trip_destination_poi tdp ON td.id=tdp.trip_destination_id LEFT JOIN destinations d ON d.id = td.destination_id LEFT JOIN pois p ON p.id=tdp.poi_id WHERE td.trip_id = '${trip_id}' ORDER BY td.order_number, tdp.order_number`
 
   // console.log('here is the trip_id', trip_id);
