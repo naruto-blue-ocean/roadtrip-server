@@ -28,6 +28,8 @@ app.post(
   }
 );
 
+app.get('/trips/:user_email', controllers.getUserTrips)
+
 app.get(
   '/notes/:user_email/:poi_id', controllers.getNote
 )
