@@ -22,8 +22,8 @@ CREATE TABLE IF NOT EXISTS trips (
 CREATE TABLE IF NOT EXISTS destinations (
   id VARCHAR(255) PRIMARY KEY UNIQUE, -- id here is pulled from Place AutoComplete API
   name VARCHAR(255) NOT NULL,
-  lat DECIMAL NOT NULL,
-  lng DECIMAL NOT NULL
+  lat VARCHAR(255) NOT NULL,
+  lng VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS pois (
@@ -51,12 +51,14 @@ CREATE TABLE IF NOT EXISTS trip_destination (
   id SERIAL PRIMARY KEY,
   trip_id INTEGER NOT NULL REFERENCES trips(id),
   destination_id VARCHAR(255) NOT NULL REFERENCES destinations(id),
-  UNIQUE (trip_id, destination_id)
+  order_number INTEGER NOT NULL,
+  UNIQUE (trip_id, destination_id, order_number)
 );
 
 CREATE TABLE IF NOT EXISTS trip_destination_poi (
   id SERIAL PRIMARY KEY,
   trip_destination_id INTEGER NOT NULL REFERENCES trip_destination(id),
   poi_id VARCHAR(255) NOT NULL REFERENCES pois(id),
-  UNIQUE (trip_destination_id, poi_id)
+  order_number INTEGER NOT NULL,
+  UNIQUE (trip_destination_id, poi_id, order_number)
 );

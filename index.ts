@@ -40,5 +40,16 @@ app.post(
   '/postCities', controllers.postCities
 )
 
+app.get('/trips/:trip_id', controllers.getTrip);
+app.delete('/trips/destinations/:destination_id', controllers.deleteDestination)
+app.delete('/trips/destinations/pois/:poi_id', controllers.deletePOI)
+
+//to update the order of destinations in a specific trip
+app.put('/trips/destinations', controllers.updateDestinationOrder)
+
+//to update the order of POIs in a specific trip
+app.put('/trips/destinations/pois', controllers.updatePOIOrder)
+
+
 
 app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}`))

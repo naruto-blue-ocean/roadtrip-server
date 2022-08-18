@@ -9,3 +9,13 @@ exports.updateNote = require("./updateNote.ts");
 
 exports.getNote = require("./getNote.ts");
 exports.postCities = require("./postCities.ts");
+
+
+
+//Trip Viewer / Editor foutes
+exports.getTrip = require('./getTrip.ts');
+exports.deleteDestination = require('./deleteDestination.ts')
+exports.deletePOI = require('./deletePOI.ts')
+
+exports.updateDestinationOrder = require('./updateDestinationOrder');
+exports.updatePOIOrder = require('./updatePOIOrder');
