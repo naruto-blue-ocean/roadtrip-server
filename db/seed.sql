@@ -1,11 +1,11 @@
 \c roadtrip;
---users
+-- users
 INSERT INTO users (email, password) VALUES ('johnny@email.com', 'johnnypass');
 INSERT INTO users (email, password) VALUES ('testuser@email.com', 'testuserpass');
 INSERT INTO users (email, password) VALUES ('testemail', 'testpassword');
 INSERT INTO users (email, password) VALUES ('jason@test.com', 'password');
-INSERT INTO users (email, password) VALUES ('noa@email.com', 'noapass');
-
+INSERT INTO users (email, password) VALUES ('noa@email.com', '2a$10$kGkH/P6HOCXzc8TOzHgZC.AtiGI8/K2vCRvdWGY147oLThmn4zGni');
+INSERT INTO users (email, password) VALUES ('test@test.com', 'test');
 
 INSERT INTO destinations (id, name, lat, lng) VALUES ('ChIJfcS6fx7LwoARZYDiqXgXL6E', 'Carson', '33.8316745', '-118.281693');
 INSERT INTO destinations (id, name, lat, lng) VALUES ('ChIJSzbuqjfD3IARckzIEB2RVeg', 'Tustin', '33.7420005', '--117.8236391');
@@ -39,7 +39,6 @@ INSERT INTO trip_destination (trip_id, destination_id, order_number) VALUES ('1'
 --san pedro
 INSERT INTO trip_destination (trip_id, destination_id, order_number) VALUES ('1', 'ChIJpYrtFq413YARX4eG8Fd9FAQ', 3);
 /*adding pois to destinations*/
-
 
 
 --notes

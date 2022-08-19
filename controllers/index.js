@@ -10,7 +10,7 @@ exports.getTripID = require('./getTripID.js');
 exports.postCities = require("./postCities.ts");
 exports.shareTrip = require("./shareTrip.js");
 
-
+exports.addPOI = require("./addPOI.ts");
 
 //Trip Viewer / Editor routes
 exports.getTrip = require('./getTrip.ts');
@@ -24,5 +24,4 @@ exports.getUserTrips = require("./getUserTrips.ts");
 exports.getArchiveTrips = require("./getArchiveTrips.ts");
 exports.postNewTrip = require("./postNewTrip.ts");
 exports.deleteTrip = require("./deleteTrip.js");
-exports.recoverTrip = require("./recoverTrip.js")
-
+exports.recoverTrip = require("./recoverTrip.js");
