@@ -34,6 +34,10 @@ app.post("/auth/login",
   }
 );
 
+
+app.post('/share/:email_address', controllers.shareTrip);
+app.get('/notes/:user_email/:poi_id', controllers.getNote)
+
 // app.post("/auth/login",
 //   // @ts-ignore
 //   (req, res, next) => {
@@ -59,24 +63,16 @@ app.post("/auth/login",
 
 
 //     );
-
-
-app.post('/share/:email_address/:trip_id', controllers.shareTrip);
-
-
 app.post('/addPOI', controllers.addPOI);
 
-//Notes
-app.get('/notes/:user_email/:poi_id', controllers.getNote)
-app.put('/updateNote', controllers.updateNote)
-
-//Cities
-app.post('/postCities', controllers.postCities)
-
-
+//Trips
 app.get('/trips/:user_email', controllers.getUserTrips)
 app.get('/trips/archive/:user_email', controllers.getArchiveTrips)
 app.post('/trips', controllers.postNewTrip)
+app.delete('/trips/:trip_id', controllers.deleteTrip)
+app.put('/trips/recover/:trip_id', controllers.recoverTrip);
+
+app.get('/trips/:userEmail/active', controllers.getActiveTripId);
 
 //Notes
 app.get('/notes/:user_email/:poi_id', controllers.getNote)
@@ -85,7 +81,8 @@ app.put('/updateNote', controllers.updateNote)
 //Cities
 app.post('/postCities', controllers.postCities)
 
-app.get('/trips/:trip_id', controllers.getTrip);
+app.get('/trips/:trip_id', controllers.getTripById);
+
 
 app.get('/trips/destinations/:trip_id', controllers.getTrip);
 

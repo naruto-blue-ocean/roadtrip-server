@@ -15,9 +15,9 @@ const updatePOIOrder = (req : any, res : any) => {
   FROM (VALUES ${queryInsertStr}) AS temp(poi_id, order_number)
   WHERE tdp.poi_id = temp.poi_id AND tdp.trip_destination_id =
   (SELECT id FROM trip_destination WHERE trip_id = ${req.params.tripId}
-  AND destination_id = '${req.params.destinationId}');`
+  AND destination_id = '${req.params.destinationId}')`;
 
-  client.query(query)
+  return client.query(query)
     .then(() => {
       res.status(200).end();
     })
