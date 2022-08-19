@@ -2,7 +2,7 @@ var client = require('../db/index.js');
 var express = require('express');
 
 const addPOI =  (req : any, res : any) => {
-  console.log('In addPOI req.body = ', req.body)
+  // console.log('In addPOI req.body = ', req.body)
   const {POIname, desID, POIID, order} = req.body;
 
   const queryString = `BEGIN;
@@ -12,10 +12,10 @@ const addPOI =  (req : any, res : any) => {
 
   client.query(queryString)
     .then(() => {
-      console.log('')
       res.status(200).send('updated')
     })
     .catch((err: any) => {
+      console.log('addPOI DB insert failed err = ', err);
       res.status(500).send(err)
     })
 }
