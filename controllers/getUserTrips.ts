@@ -7,9 +7,8 @@ const getUserTrips = (req: any, res: any) => {
   const queryString = `
   SELECT DISTINCT trips.id, name, status FROM trips
   INNER JOIN user_trip
-  ON user_trip.user_email = trips.user_email
+  ON user_trip.user_email = '${req.params.user_email}'
   WHERE
-  trips.email = '${req.params.user_email}'
   trips.status = 'planned' OR trips.status = 'active';`
 
   client.query(queryString)
