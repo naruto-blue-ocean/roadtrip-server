@@ -12,11 +12,11 @@ INSERT INTO destinations (id, name, lat, lng) VALUES ('ChIJSzbuqjfD3IARckzIEB2RV
 INSERT INTO destinations (id, name, lat, lng) VALUES ('ChIJpYrtFq413YARX4eG8Fd9FAQ', 'San Pedro', '33.7360619', '--118.2922461');
 
 --trips and user_trip
-WITH id as (INSERT INTO trips (name, status) VALUES ('THE TRIPPIEST TRIP', 'planned') RETURNING id)
+WITH id as (INSERT INTO trips (name, status) VALUES ('THE TRIPPIEST TRIP', 'active') RETURNING id)
 INSERT INTO user_trip (user_email, trip_id) VALUES ('noa@email.com', (SELECT * FROM id));
 WITH id as (INSERT INTO trips (name, status) VALUES ('The 4th Great Ninja War', 'planned') RETURNING id)
 INSERT INTO user_trip (user_email, trip_id) VALUES ('noa@email.com', (SELECT * FROM id));
-WITH id as (INSERT INTO trips (name, status) VALUES ('The journey to a job in Software Engineering', 'active') RETURNING id)
+WITH id as (INSERT INTO trips (name, status) VALUES ('The journey to a job in Software Engineering', 'planned') RETURNING id)
 INSERT INTO user_trip (user_email, trip_id) VALUES ('noa@email.com', (SELECT * FROM id));
 WITH id as (INSERT INTO trips (name, status) VALUES ('Going to Mexico', 'trash') RETURNING id)
 INSERT INTO user_trip (user_email, trip_id) VALUES ('noa@email.com', (SELECT * FROM id));
