@@ -8,13 +8,13 @@ import { Request, Response } from 'express';
 const passport = require('passport');
 require('./db/passportConfig.ts')(passport);
 
-const flash = require('express-flash');
+// const flash = require('express-flash');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
-app.use(flash())
+// app.use(flash())
 
 app.post(
   "/auth/signup",
