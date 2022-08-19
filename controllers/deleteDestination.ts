@@ -10,7 +10,7 @@ const deleteDestination = (req : any, res : any) => {
   DELETE FROM trip_destination WHERE trip_id = ${req.params.tripId} AND
   destination_id = '${req.params.destinationId}'`;
 
-  client.query(query)
+  return client.query(query)
     .then(() => {
       res.status(200).end();
     })

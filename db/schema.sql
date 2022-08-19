@@ -44,24 +44,24 @@ CREATE TABLE IF NOT EXISTS notes (
 CREATE TABLE IF NOT EXISTS user_trip (
   id SERIAL PRIMARY KEY,
   user_email VARCHAR(255) NOT NULL REFERENCES users(email),
-  trip_id INTEGER NOT NULL REFERENCES trips(id),
+  trip_id INTEGER NOT NULL REFERENCES trips(id) ON DELETE CASCADE,
   UNIQUE (user_email, trip_id)
 );
 
 CREATE TABLE IF NOT EXISTS trip_destination (
   id SERIAL PRIMARY KEY,
-  trip_id INTEGER NOT NULL REFERENCES trips(id),
+  trip_id INTEGER NOT NULL REFERENCES trips(id) ON DELETE CASCADE,
   destination_id VARCHAR(255) NOT NULL REFERENCES destinations(id),
   order_number INTEGER NOT NULL,
-  UNIQUE (trip_id, destination_id)
+  UNIQUE (trip_id, order_number)
 );
 
 CREATE TABLE IF NOT EXISTS trip_destination_poi (
   id SERIAL PRIMARY KEY,
-  trip_destination_id INTEGER NOT NULL REFERENCES trip_destination(id),
+  trip_destination_id INTEGER NOT NULL REFERENCES trip_destination(id) ON DELETE CASCADE,
   poi_id VARCHAR(255) NOT NULL REFERENCES pois(id),
   order_number INTEGER NOT NULL,
-  UNIQUE (trip_destination_id, poi_id)
+  UNIQUE (trip_destination_id, order_number)
 );
 
 CREATE TABLE IF NOT EXISTS user_poi_note (
