@@ -10,7 +10,8 @@ const postCities = async (req: any, res: any) => {
     var values = [city.name, city.id, city.lat, city.lng, city.trip_id, city.lastIndex]
     var queryString = `WITH city AS (
       INSERT INTO destinations(name, id, lat, lng)
-    VALUES ($1, $2, $3, $4))
+    VALUES ($1, $2, $3, $4)
+    ON CONFLICT (id) DO NOTHING)
     INSERT INTO trip_destination(destination_id, trip_id, order_number)
     VALUES($2, $5, $6)`;
 
