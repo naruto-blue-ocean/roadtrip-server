@@ -10,6 +10,7 @@ body of req will be an object
 */
 
 const updatePOIOrder = (req : any, res : any) => {
+  console.log(req.body);
   const queryInsertStr = Object.entries(req.body).map(([poiId, orderNumber]) =>  (`('${poiId}', ${orderNumber})`)).join(', ');
   const query = `UPDATE trip_destination_poi AS tdp SET order_number = temp.order_number
   FROM (VALUES ${queryInsertStr}) AS temp(poi_id, order_number)

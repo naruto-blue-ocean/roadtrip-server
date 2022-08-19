@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS trip_destination (
   trip_id INTEGER NOT NULL REFERENCES trips(id) ON DELETE CASCADE,
   destination_id VARCHAR(255) NOT NULL REFERENCES destinations(id),
   order_number INTEGER NOT NULL,
-  UNIQUE (trip_id, order_number)
+  UNIQUE (trip_id, destination_id)
 );
 
 CREATE TABLE IF NOT EXISTS trip_destination_poi (
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS trip_destination_poi (
   trip_destination_id INTEGER NOT NULL REFERENCES trip_destination(id) ON DELETE CASCADE,
   poi_id VARCHAR(255) NOT NULL REFERENCES pois(id),
   order_number INTEGER NOT NULL,
-  UNIQUE (trip_destination_id, order_number)
+  UNIQUE (trip_destination_id, poi_id)
 );
 
 CREATE TABLE IF NOT EXISTS user_poi_note (
