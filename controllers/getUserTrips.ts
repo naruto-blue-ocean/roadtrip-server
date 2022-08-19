@@ -15,8 +15,6 @@ const getUserTrips = (req: any, res: any) => {
 
   client.query(queryString)
   .then((data: any) => {
-    console.log('req email in controller', req.params.user_email)
-    console.log(data.rows);
     res.send(data.rows);
   })
   .catch((error: Error) => {
