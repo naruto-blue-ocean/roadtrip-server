@@ -80,9 +80,16 @@ app.put('/updateNote', controllers.updateNote)
 //Cities
 app.post('/postCities', controllers.postCities)
 
+app.get('/trips/:trip_id', controllers.getTrip);
 
-app.get('/trips/destinations/:trip_id', controllers.getTrip);
-app.put('/trips/:trip_id/destinations/:destination_id/pois', controllers.updatePOIOrder);
+app.delete('/trips/:tripId/destinations/:destinationId', controllers.deleteDestination);
+app.delete('/trips/:tripId/destinations/:destinationId/pois/:poiId', controllers.deletePOI);
+
+//to update the order of destinations in a specific trip
+app.put('/trips/:tripId/destinations', controllers.updateDestinationOrder);
+
+//to update the order of POIs in a specific trip
+app.put('/trips/:tripId/destinations/:destinationId/pois', controllers.updatePOIOrder);
 
 //Server initialization
 app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}`))
