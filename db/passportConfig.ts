@@ -17,7 +17,6 @@ module.exports = (passport: any) => {
           if (userExists) {
             return done(null, false);
           }
-
           const user = await createUser(email, password);
           return done(null, user);
         } catch (error) {
