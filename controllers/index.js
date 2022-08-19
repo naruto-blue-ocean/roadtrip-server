@@ -23,4 +23,5 @@ exports.updatePOIOrder = require('./updatePOIOrder');
 exports.getUserTrips = require("./getUserTrips.ts");
 exports.getArchiveTrips = require("./getArchiveTrips.ts");
 exports.postNewTrip = require("./postNewTrip.ts");
+exports.deleteTrip = require("./deleteTrip.js");
 
