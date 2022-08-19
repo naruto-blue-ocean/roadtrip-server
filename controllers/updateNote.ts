@@ -9,7 +9,7 @@ const updateNote = (req : any, res : any) => {
   const queryStr = `INSERT INTO notes (content, user_email, poi_id) VALUES ('${req.body.note}' , '${req.body.user_email}' , '${req.body.poi_id}') ON CONFLICT (user_email, poi_id) DO UPDATE SET content = '${req.body.note}'; `
   // const queryStr = `UPDATE notes SET content = ${req.body.value} WHERE user_email = '${req.params.user_email}' AND poi_id = '${req.params.poi_id}`
 
-  client.query(queryStr)
+  return client.query(queryStr)
   .then(() => {
     console.log("DID WE GET IN HERE?????? hellllooooo")
     res.send('updated')
