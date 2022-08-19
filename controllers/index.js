@@ -24,4 +24,5 @@ exports.getUserTrips = require("./getUserTrips.ts");
 exports.getArchiveTrips = require("./getArchiveTrips.ts");
 exports.postNewTrip = require("./postNewTrip.ts");
 exports.deleteTrip = require("./deleteTrip.js");
+exports.recoverTrip = require("./recoverTrip.js")
 

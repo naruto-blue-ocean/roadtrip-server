@@ -38,6 +38,7 @@ app.get('/trips/:user_email', controllers.getUserTrips)
 app.get('/trips/archive/:user_email', controllers.getArchiveTrips)
 app.post('/trips', controllers.postNewTrip)
 app.delete('/trips/:trip_id', controllers.deleteTrip)
+app.put('/trips/recover/:trip_id', controllers.recoverTrip);
 
 //Notes
 app.get('/notes/:user_email/:poi_id', controllers.getNote)
