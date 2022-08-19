@@ -1,12 +1,11 @@
 \c roadtrip;
 --users
-INSERT INTO users (email, password) VALUES ('johnny@email.com', 'johnnypass');
-INSERT INTO users (email, password) VALUES ('testuser@email.com', 'testuserpass');
-INSERT INTO users (email, password) VALUES ('testemail', 'testpassword');
-INSERT INTO users (email, password) VALUES ('jason@test.com', 'password');
-INSERT INTO users (email, password) VALUES ('noa@email.com', 'noapass');
+-- INSERT INTO users (email, password) VALUES ('johnny@email.com', 'johnnypass');
+-- INSERT INTO users (email, password) VALUES ('testuser@email.com', 'testuserpass');
+-- INSERT INTO users (email, password) VALUES ('testemail', 'testpassword');
+-- INSERT INTO users (email, password) VALUES ('jason@test.com', 'password');
+-- INSERT INTO users (email, password) VALUES ('noa@email.com', '2a$10$kGkH/P6HOCXzc8TOzHgZC.AtiGI8/K2vCRvdWGY147oLThmn4zGni');
 -- INSERT INTO users (email, password) VALUES ('test@test.com', 'test');
-
 
 
 INSERT INTO destinations (id, name, lat, lng) VALUES ('ChIJfcS6fx7LwoARZYDiqXgXL6E', 'Carson', '33.8316745', '-118.281693');
