@@ -86,11 +86,8 @@ app.put('/updateNote', controllers.updateNote)
 app.post('/postCities', controllers.postCities)
 
 
-app.post(
-  '/postCities', controllers.postCities
-)
-
 app.get('/trips/destinations/:trip_id', controllers.getTrip);
+app.put('/trips/:trip_id/destinations/:destination_id/pois', controllers.updatePOIOrder);
 
 //Server initialization
 app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}`))
