@@ -13,7 +13,7 @@ const updateDestinationOrder = (req : any, res : any) => {
   const queryInsertStr = Object.entries(req.body).map(([destinationId, orderNumber]) =>  (`('${destinationId}', ${orderNumber})`)).join(', ');
   const query = `UPDATE trip_destination AS td SET order_number = temp.order_number
   FROM (VALUES ${queryInsertStr}) AS temp(destination_id, order_number)
-  WHERE td.destination_id = temp.destination_id AND trip_id = ${req.params.tripId}`;
+  WHERE td.destination_id = temp.destination_id AND trip_id = ${req.params.trip_id}`;
 
   client.query(query)
     .then(() => {
