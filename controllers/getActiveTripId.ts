@@ -7,7 +7,7 @@ const getActiveTripId = (req : any, res : any) => {
   user_trip ut ON ut.trip_id = t.id WHERE t.status = 'active'
   AND ut.user_email = '${req.params.userEmail}'`;
 
-  client.query(query)
+  return client.query(query)
     .then((result: any) => {
       res.status(200).send(result.rows[0]);
     })
