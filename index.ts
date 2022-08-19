@@ -91,6 +91,8 @@ app.post('/postCities', controllers.postCities)
 app.get('/trips/:trip_id', controllers.getTripById);
 
 
+app.get('/trips/destinations/:trip_id', controllers.getTrip);
+
 app.delete('/trips/:tripId/destinations/:destinationId', controllers.deleteDestination);
 app.delete('/trips/:tripId/destinations/:destinationId/pois/:poiId', controllers.deletePOI);
 
