@@ -10,15 +10,12 @@ body of req will be an object
 */
 
 const updatePOIOrder = (req : any, res : any) => {
-  console.log(req.body);
-  console.log(req.params.destinationId)
-  console.log(req.query);
   const queryInsertStr = Object.entries(req.body).map(([poiId, orderNumber]) =>  (`('${poiId}', ${orderNumber})`)).join(', ');
   const query = `UPDATE trip_destination_poi AS tdp SET order_number = temp.order_number
   FROM (VALUES ${queryInsertStr}) AS temp(poi_id, order_number)
   WHERE tdp.poi_id = temp.poi_id AND tdp.trip_destination_id =
-  (SELECT id FROM trip_destination WHERE trip_id = ${req.params.trip_id}
-  AND destination_id = '${req.params.destination_id}');`
+  (SELECT id FROM trip_destination WHERE trip_id = ${req.params.tripId}
+  AND destination_id = '${req.params.destinationId}');`
 
   client.query(query)
     .then(() => {
