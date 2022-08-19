@@ -10,7 +10,7 @@ const getTrip = (req : any, res : any) => {
   LEFT JOIN trip_destination_poi tdp ON td.id=tdp.trip_destination_id LEFT JOIN destinations d ON d.id = td.destination_id LEFT JOIN pois p ON p.id=tdp.poi_id WHERE td.trip_id = '${trip_id}' ORDER BY td.order_number, tdp.order_number`
 
   // console.log('here is the trip_id', trip_id);
-  client.query(query)
+  return client.query(query)
   .then((data:any) => {
     res.status(200);
     res.send(JSON.stringify(data.rows))

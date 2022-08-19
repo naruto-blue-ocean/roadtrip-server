@@ -13,7 +13,7 @@ exports.shareTrip = require("./shareTrip.js");
 exports.addPOI = require("./addPOI.ts");
 
 //Trip Viewer / Editor routes
-exports.getTrip = require('./getTrip.ts');
+exports.getTripById = require('./getTripById.ts');
 exports.deleteDestination = require('./deleteDestination.ts')
 exports.deletePOI = require('./deletePOI.ts')
 
@@ -23,5 +23,10 @@ exports.updatePOIOrder = require('./updatePOIOrder');
 exports.getUserTrips = require("./getUserTrips.ts");
 exports.getArchiveTrips = require("./getArchiveTrips.ts");
 exports.postNewTrip = require("./postNewTrip.ts");
+<<<<<<< HEAD
 exports.deleteTrip = require("./deleteTrip.js");
 exports.recoverTrip = require("./recoverTrip.js");
+=======
+
+exports.getActiveTripId = require("./getActiveTripId.ts");
+>>>>>>> main

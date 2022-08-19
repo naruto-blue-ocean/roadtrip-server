@@ -7,14 +7,14 @@ const getUserTrips = (req: any, res: any) => {
   const queryString = `
   SELECT DISTINCT trips.id, name, status FROM trips
   INNER JOIN user_trip
-  ON user_trip.user_email = '${req.params.user_email}'
+  ON user_trip.trip_id = trips.id
   WHERE
-  trips.status = 'planned' OR trips.status = 'active';`
+  user_trip.user_email = '${req.params.user_email}'
+  AND
+  (trips.status = 'planned' OR trips.status = 'active');`
 
   client.query(queryString)
   .then((data: any) => {
-    console.log('req email in controller', req.params.user_email)
-    console.log(data.rows);
     res.send(data.rows);
   })
   .catch((error: Error) => {

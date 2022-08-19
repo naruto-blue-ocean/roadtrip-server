@@ -72,6 +72,7 @@ app.post('/trips', controllers.postNewTrip)
 app.delete('/trips/:trip_id', controllers.deleteTrip)
 app.put('/trips/recover/:trip_id', controllers.recoverTrip);
 
+app.get('/trips/:userEmail/active', controllers.getActiveTripId);
 
 //Notes
 app.get('/notes/:user_email/:poi_id', controllers.getNote)
@@ -80,7 +81,10 @@ app.put('/updateNote', controllers.updateNote)
 //Cities
 app.post('/postCities', controllers.postCities)
 
-app.get('/trips/:trip_id', controllers.getTrip);
+app.get('/trips/:trip_id', controllers.getTripById);
+
+
+app.get('/trips/destinations/:trip_id', controllers.getTrip);
 
 app.delete('/trips/:tripId/destinations/:destinationId', controllers.deleteDestination);
 app.delete('/trips/:tripId/destinations/:destinationId/pois/:poiId', controllers.deletePOI);

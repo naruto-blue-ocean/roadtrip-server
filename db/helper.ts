@@ -13,7 +13,8 @@ const emailExists = async (email: String) => {
 
 const createUser = async (email: String, password: String) => {
   const salt = await bcrypt.genSalt(10);
-  const hash = await bcrypt.hash(password, salt);
+  // const hash = await bcrypt.hash(password, salt);
+  const hash = password;
 
   const data = await client.query(
     "INSERT INTO users(email, password) VALUES ($1, $2) RETURNING email, password",
@@ -25,7 +26,8 @@ const createUser = async (email: String, password: String) => {
 };
 
 const matchPassword = async (password: String, hashPassword: String) => {
-  const match = await bcrypt.compare(password, hashPassword);
+  // const match = await bcrypt.compare(password, hashPassword);
+  const match = password === hashPassword
   return match
 };
 
