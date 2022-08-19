@@ -7,7 +7,7 @@ const addPOI =  (req : any, res : any) => {
 
   const queryString = `BEGIN;
     INSERT INTO pois (id, name) VALUES ('${POIID}', '${POIname}') ON CONFLICT (id) DO NOTHING;
-    INSERT INTO trip_destination_poi (trip_destination_id, poi_id, order_number) VALUES ((SELECT id FROM trip_destination WHERE destination_id = '${desID}' AND trip_id = ${tripID}), '${POIID}', ${order}) ON CONFLICT (trip_destination_id, poi_id) DO NOTHING;
+    INSERT INTO trip_destination_poi (trip_destination_id, poi_id, order_number) VALUES ((SELECT id FROM trip_destination WHERE destination_id = '${desID}' AND trip_id = ${tripID}), '${POIID}', ${order});
     COMMIT;`
 
   client.query(queryString)
