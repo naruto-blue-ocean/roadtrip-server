@@ -8,7 +8,7 @@ const deletePOI = (req : any, res : any) => {
   AND trip_destination_id = (SELECT id FROM trip_destination WHERE trip_id =
   ${req.params.tripId} AND destination_id = '${req.params.destinationId}')`;
 
-  client.query(query)
+  return client.query(query)
     .then(() => {
       res.status(200).end();
     })
