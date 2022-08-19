@@ -1,8 +1,8 @@
 var express = require('express');
 var client = require('../db/index.js');
 
-const getTrip = (req : any, res : any) => {
-
+const getTripById = (req : any, res : any) => {
+  console.log('server getTrip was invoked');
   // console.log('getTrip controller invoked! here is req.params', req.query);
   const trip_id: string = req.params.trip_id;
 
@@ -36,7 +36,7 @@ LEFT JOIN trip_destination_poi tdp ON td.id=tdp.trip_destination_id LEFT JOIN de
 //   WHERE tdp.trip_destination_id = 3 ORDER BY order_number) AS poi_item)
 //   SELECT json_agg(json_build_object) FROM agg`;
 // const query3 = `  select d.id AS id, d.name AS cityName, d.lat AS lat, d.lng AS lng, td.order_number AS order_number FROM destinations AS d INNER JOIN trip_destination AS td ON d.id = td.destination_id WHERE td.id = 3`;
-module.exports = getTrip;
+module.exports = getTripById;
 
 
 /*
