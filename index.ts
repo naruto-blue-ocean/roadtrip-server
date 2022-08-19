@@ -81,7 +81,7 @@ app.put('/updateNote', controllers.updateNote)
 //Cities
 app.post('/postCities', controllers.postCities)
 
-app.get('/trips/:trip_id', controllers.getTripById);
+app.get('/trips/tripinfo/:trip_id', controllers.getTripById);
 
 
 app.delete('/trips/:tripId/destinations/:destinationId', controllers.deleteDestination);
