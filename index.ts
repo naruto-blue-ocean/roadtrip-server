@@ -35,7 +35,7 @@ app.post("/auth/login",
 );
 
 
-app.post('/share/:email_address', controllers.shareTrip);
+app.post('/share/:email_address/:trip_id', controllers.shareTrip);
 app.get('/notes/:user_email/:poi_id', controllers.getNote)
 
 // app.post("/auth/login",
@@ -73,6 +73,8 @@ app.delete('/trips/:trip_id', controllers.deleteTrip)
 app.put('/trips/recover/:trip_id', controllers.recoverTrip);
 
 app.get('/trips/:userEmail/active', controllers.getActiveTripId);
+
+
 
 //Notes
 app.get('/notes/:user_email/:poi_id', controllers.getNote)
