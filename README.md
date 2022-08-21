@@ -33,7 +33,7 @@ This project was a 1-week sprint where our team completed a MVP for an external 
 
 # How To Check Out This Application
 
-This repository serves client side for this application. You will also need to clone or download the repository for the [server side](https://github.com/naruto-blue-ocean/roadtrip-server).
+This repository serves server side for this application. You will also need to clone or download the repository for the [client side](https://github.com/naruto-blue-ocean/roadtrip).
 
 ### Set up Expo
   - Create an [Expo account](https://expo.dev/). Download the Expo Go app on your mobile phone and sign in using this account.
